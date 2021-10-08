@@ -1,6 +1,6 @@
 # AngularNgxTranslateDemoApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.29.
+A step-by-step walkthrough from <https://www.freakyjolly.com/switch-multiple-languages-i18n-using-ngx-translate-in-angular-12/>
 
 ## Development server
 
