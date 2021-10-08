@@ -7,8 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-ngx-translate-demo-app';
-    
+  title!: string;
+  emailId!: string;
+  user!: { loggedInUser: string };
+
   constructor(
     public translate: TranslateService
   ){
@@ -16,10 +18,25 @@ export class AppComponent {
     translate.addLangs(['en', 'es', 'fr']);
     // Set default language
     translate.setDefaultLang('en');
+
+    this.getTitleString();
   }
 
   //Switch language
   translateLanguageTo(lang: string) {
     this.translate.use(lang);
+  }
+
+  getTitleString() {
+    // asynchronous - gets translations then completes.
+    this.translate.get(['TITLE', 'USER_INFO.EMAIL_ADDRESS'])
+      .subscribe(translations => {
+        this.title = translations['TITLE'];
+        this.emailId = translations['USER_INFO.EMAIL_ADDRESS'];
+      });
+  }
+
+  ngOnInit(): void {
+    this.user = { loggedInUser: 'John Steve'}; // Defining static value for demo
   }
 }
